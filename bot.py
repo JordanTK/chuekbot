@@ -1,5 +1,5 @@
 import discord,re
-with open(".//discord//disco_link.txt", "r") as f:
+with open("disco_link.txt", "r") as f:
     t = f.readline()
 
 def run_discord_bot():
