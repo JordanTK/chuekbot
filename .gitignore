@@ -1,4 +1,4 @@
 a.txt
 disco_link.txt
 b.pyc
-*.pyc
+__pycache__/
