@@ -1,9 +1,11 @@
-import discord,re
-with open("disco_link.txt", "r") as f:
-    t = f.readline()
+import discord,os,re
+from dotenv import load_dotenv
+
+# Loading the variables from .env file
+load_dotenv()
 
 def run_discord_bot():
-    TOKEN = t
+    TOKEN = os.getenv("token")
     intents = discord.Intents(messages = True, message_content = True, dm_messages = True, reactions = True, emojis = True)
     client = discord.Client(intents=intents)
 
