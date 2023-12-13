@@ -1,9 +1,9 @@
-import discord,os,re
+import discord,os,responses
 from dotenv import load_dotenv
 
 # Loading the variables from .env file
 load_dotenv()
-
+responses = [responses.GoodMorning()]
 def run_discord_bot():
     TOKEN = os.getenv("token")
     intents = discord.Intents(messages = True, message_content = True, dm_messages = True, reactions = True, emojis = True)
@@ -15,12 +15,9 @@ def run_discord_bot():
     
     @client.event
     async def on_message(message):
-        if message.author == client.user:
-            return
-
-        # Adding reactions
-        if re.search("добро утро", str(message.content).lower()):
-            await message.add_reaction("☕")
+        for response in responses:
+            response.process(message=message,client=client)
+            await response.respond(message=message)
 
  
     
