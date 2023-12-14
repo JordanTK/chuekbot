@@ -1,9 +1,11 @@
-import discord,re
-with open("disco_link.txt", "r") as f:
-    t = f.readline()
+import discord,os,responses
+from dotenv import load_dotenv
 
+# Loading the variables from .env file
+load_dotenv()
+responses = [responses.GoodMorning()]
 def run_discord_bot():
-    TOKEN = t
+    TOKEN = os.getenv("token")
     intents = discord.Intents(messages = True, message_content = True, dm_messages = True, reactions = True, emojis = True)
     client = discord.Client(intents=intents)
 
@@ -13,13 +15,7 @@ def run_discord_bot():
     
     @client.event
     async def on_message(message):
-        if message.author == client.user:
-            return
-
-        # Adding reactions
-        if re.search("добро утро", str(message.content).lower()):
-            await message.add_reaction("☕")
-
- 
-    
+        for response in responses:
+                    await response.respond(message=message)
+                     
     client.run(TOKEN)
