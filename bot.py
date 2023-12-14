@@ -16,6 +16,6 @@ def run_discord_bot():
     @client.event
     async def on_message(message):
         for response in responses:
-            await response.respond(message=message)
-            
+                    await response.respond(message=message)
+                     
     client.run(TOKEN)
