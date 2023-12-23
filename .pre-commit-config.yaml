@@ -1,0 +1,9 @@
+repos:
+- repo: local
+  hooks:  # <- this was missing
+  - id: pytest
+    name: Run tests (pytest)
+    entry: pytest -x
+    language: system
+    types: [python]
+    pass_filenames: false
