@@ -1,9 +1,17 @@
 repos:
 - repo: local
-  hooks:  # <- this was missing
+  hooks:
   - id: pytest
     name: Run tests (pytest)
     entry: pytest -x
+    language: system
+    types: [python]
+    pass_filenames: false
+- repo: local
+  hooks:
+  - id: pylint
+    name: Linting (pylint)
+    entry: pylint -x
     language: system
     types: [python]
     pass_filenames: false
