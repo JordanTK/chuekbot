@@ -1,0 +1,21 @@
+repos:
+- repo: local
+  hooks:
+  - id: pytest
+    name: Run tests (pytest)
+    entry: pytest -x
+    language: system
+    types: [python]
+    pass_filenames: false
+- repo: local
+  hooks:
+    - id: pylint
+      name: pylint
+      entry: pylint
+      language: system
+      types: [python]
+      args:
+        [
+          "-rn", # Only display messages
+          "-sn", # Don't display the score
+        ]
